@@ -7,4 +7,11 @@
     <Platforms>x64;x86</Platforms>
   </PropertyGroup>
 
+  
+  <Target Name="Add-x64-SDL-Libs" Condition="$(ConfigurationName) == 'Debug'" AfterTargets="Build">
+    <ItemGroup>
+      <Content Include="$(ProjectDir)SDL\x86\SDL-86.dll" Pack="true" PackagePath="\runtimes\win10-86\native" />
+      <Content Include="$(ProjectDir)SDL\x64\SDL-64.dll" Pack="true" PackagePath="\runtimes\win10-64\native" />
+    </ItemGroup>
+  </Target>
 </Project>
