@@ -1,17 +1,50 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Configurations>Debug;Release</Configurations>
     <Platforms>x64;x86</Platforms>
   </PropertyGroup>
 
-  
-  <Target Name="Add-x64-SDL-Libs" Condition="$(ConfigurationName) == 'Debug'" AfterTargets="Build">
+  <PropertyGroup>
+    <OutputPath></OutputPath>
+    <PackageId>MultiArchNuget-$(Platform)</PackageId>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <DefineConstants>TRACE;DEBUG;DEBUG86</DefineConstants>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DefineConstants>TRACE;DEBUG;DEBUG64</DefineConstants>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DefineConstants>TRACE;RELEASE64</DefineConstants>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <DefineConstants>TRACE;RELEASE86</DefineConstants>
+  </PropertyGroup>
+
+
+  <Target Name="BuildArchLibs" Condition="'$(ConfigurationName)' == 'Release'" AfterTargets="Build">
     <ItemGroup>
-      <Content Include="$(ProjectDir)SDL\x86\SDL-86.dll" Pack="true" PackagePath="\runtimes\win10-86\native" />
-      <Content Include="$(ProjectDir)SDL\x64\SDL-64.dll" Pack="true" PackagePath="\runtimes\win10-64\native" />
+      <Content Include="$(ProjectDir)bin\x86\Release\netcoreapp3.1\$(AssemblyName).dll" Pack="true" PackagePath="\lib\win10-x86" />
+      <Content Include="$(ProjectDir)bin\x64\Release\netcoreapp3.1\$(AssemblyName).dll" Pack="true" PackagePath="\lib\win10-x64" />
+      <Content Include="$(ProjectDir)MultiArchNuget.targets" Pack="true" PackagePath="\build" />
     </ItemGroup>
   </Target>
+  
+  
+  <!--<Target Name="PackNativeLibs" Condition="$(ConfigurationName) == 'Release'" AfterTargets="Build">
+    <ItemGroup>
+      <Content Include="$(ProjectDir)SDL\$(PlatformName)\SDL-$(PlatformName).dll" Pack="true" PackagePath="\runtimes\win10-$(PlatformName)\native" />
+    </ItemGroup>
+  </Target>-->
 </Project>

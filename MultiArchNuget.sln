@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiArchNuget", "MultiArchNuget\MultiArchNuget.csproj", "{28DE502F-3AE7-4ACD-8E30-7E85A32DA90C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerPlayground", "LoggerPlayground\LoggerPlayground.csproj", "{1CD08A25-8C7B-4E04-B8E2-535F2BC1B146}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{28DE502F-3AE7-4ACD-8E30-7E85A32DA90C}.Release|x64.Build.0 = Release|x64
 		{28DE502F-3AE7-4ACD-8E30-7E85A32DA90C}.Release|x86.ActiveCfg = Release|x86
 		{28DE502F-3AE7-4ACD-8E30-7E85A32DA90C}.Release|x86.Build.0 = Release|x86
+		{1CD08A25-8C7B-4E04-B8E2-535F2BC1B146}.Debug|x64.ActiveCfg = Debug|x64
+		{1CD08A25-8C7B-4E04-B8E2-535F2BC1B146}.Debug|x64.Build.0 = Debug|x64
+		{1CD08A25-8C7B-4E04-B8E2-535F2BC1B146}.Debug|x86.ActiveCfg = Debug|x86
+		{1CD08A25-8C7B-4E04-B8E2-535F2BC1B146}.Debug|x86.Build.0 = Debug|x86
+		{1CD08A25-8C7B-4E04-B8E2-535F2BC1B146}.Release|x64.ActiveCfg = Release|x64
+		{1CD08A25-8C7B-4E04-B8E2-535F2BC1B146}.Release|x64.Build.0 = Release|x64
+		{1CD08A25-8C7B-4E04-B8E2-535F2BC1B146}.Release|x86.ActiveCfg = Release|x86
+		{1CD08A25-8C7B-4E04-B8E2-535F2BC1B146}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

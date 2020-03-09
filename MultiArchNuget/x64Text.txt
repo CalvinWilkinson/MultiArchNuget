@@ -1,0 +1,1 @@
+﻿This is a x64 text file for testing the targets file
