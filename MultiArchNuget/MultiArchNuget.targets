@@ -2,24 +2,24 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!--DLL PATHS-->
   <ItemGroup>
-    <!--<_libPath Include="$(MSBuildThisFileDirectory)\runtimes\win10-$(PlatformName)\lib\netcoreapp3.1\MultiArchNuget.dll" />
-    <_txtPath Include="$(MSBuildThisFileDirectory)\runtimes\win10-$(PlatformName)\lib\netcoreapp3.1\x64Text.txt" />-->
-    <_libPath Include="..\runtimes\win10-$(PlatformName)\lib\netcoreapp3.1\MultiArchNuget.dll" />
-    <_txtPath Include="..\runtimes\win10-$(PlatformName)\lib\netcoreapp3.1\x64Text.txt" />
+    <_buildLibPath Include="$(MSBuildThisFileDirectory)$(PlatformName)\MultiArchNuget.dll" />
+    <_libPath Include="..\lib\netcoreapp3.1\MultiArchNuget.dll" />
   </ItemGroup>
+
+  <Target Name="ReplaceLibrary" BeforeTargets="Build">
+    <Copy SourceFiles="@(_buildLibPath)" DestinationFiles="@(_libPath)"/>
+  </Target>
   
-  
-	<Target Name="ChooseLibArch" AfterTargets="Build" >
+	<!--<Target Name="ChooseLibArch" AfterTargets="Build" >
     <Message Importance="high" Text="Src File: @(_libPath)"/>
     <Message Importance="high" Text="Dest Path: $(OutDir)"/>
 
-    <Copy SourceFiles="@(_libPath)" DestinationFolder="$(OutDir)" ContinueOnError="false"/>
-    <Copy SourceFiles="@(_txtPath)" DestinationFolder="$(OutDir)" ContinueOnError="false"/>
+    <Copy SourceFiles="@(_buildLibPath)" DestinationFolder="$(OutDir)" ContinueOnError="false"/>
     
     <OnError ExecuteTargets="OnErrorTarget"/>
-	</Target>
+	</Target>-->
 
-  <Target Name="OnErrorTarget">
+  <!--<Target Name="OnErrorTarget">
     <Message Importance="high" Text="!!ERROR!! => MultiArchNuget.targets Error Occurred"/>
-  </Target>
+  </Target>-->
 </Project>

@@ -9,7 +9,7 @@
 
   <PropertyGroup>
     <OutputPath></OutputPath>
-    <PackageId>MultiArchNuget-$(Platform)</PackageId>
+    <PackageId>MultiArchNuget</PackageId>
   </PropertyGroup>
 
 
@@ -39,8 +39,8 @@
 
   <Target Name="BuildArchLibs" Condition="'$(ConfigurationName)' == 'Release'" AfterTargets="Build">
     <ItemGroup>
-      <Content Include="@(_x86LibPath)" Pack="true" PackagePath="\runtimes\win10-x86\lib\netcoreapp3.1" />
-      <Content Include="@(_x64LibPath)" Pack="true" PackagePath="\runtimes\win10-x64\lib\netcoreapp3.1" />
+      <Content Include="@(_x86LibPath)" Pack="true" PackagePath="\build\x86" />
+      <Content Include="@(_x64LibPath)" Pack="true" PackagePath="\build\x64" />
       <Content Include="$(ProjectDir)MultiArchNuget.targets" Pack="true" PackagePath="\build" />
       
       
