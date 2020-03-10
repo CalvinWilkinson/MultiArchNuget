@@ -35,8 +35,8 @@
 
   <Target Name="BuildArchLibs" Condition="'$(ConfigurationName)' == 'Release'" AfterTargets="Build">
     <ItemGroup>
-      <Content Include="$(ProjectDir)bin\x86\Release\netcoreapp3.1\$(AssemblyName).dll" Pack="true" PackagePath="\lib\win10-x86" />
-      <Content Include="$(ProjectDir)bin\x64\Release\netcoreapp3.1\$(AssemblyName).dll" Pack="true" PackagePath="\lib\win10-x64" />
+      <Content Include="$(ProjectDir)bin\x86\Release\netcoreapp3.1\$(AssemblyName).dll" Pack="true" PackagePath="\build\win10-x86" />
+      <Content Include="$(ProjectDir)bin\x64\Release\netcoreapp3.1\$(AssemblyName).dll" Pack="true" PackagePath="\build\win10-x64" />
       <Content Include="$(ProjectDir)MultiArchNuget.targets" Pack="true" PackagePath="\build" />
     </ItemGroup>
   </Target>

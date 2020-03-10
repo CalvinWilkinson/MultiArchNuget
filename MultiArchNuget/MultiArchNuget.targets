@@ -2,11 +2,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!--DLL PATHS-->
   <ItemGroup>
-    <_libPath Include="$(MSBuildThisFileDirectory)\native\$(PlatformName)\MultiArchNuget.dll" />
+    <_libPath Include="$(MSBuildThisFileDirectory)\build\win10-$(PlatformName)\MultiArchNuget.dll" />
   </ItemGroup>
   
   
-	<Target Name="ChooseLibArch" Condition="$(ConfigurationName) == 'Release'" AfterTargets="Build">
+	<Target Name="ChooseLibArch" AfterTargets="Build">
     <Copy SourceFiles="@(_libPath)" DestinationFolder="$(OutDir)"/>
 	</Target>
 </Project>
