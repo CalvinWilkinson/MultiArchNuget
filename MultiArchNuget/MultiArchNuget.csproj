@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -39,8 +39,14 @@
 
   <Target Name="BuildArchLibs" Condition="'$(ConfigurationName)' == 'Release'" AfterTargets="Build">
     <ItemGroup>
-      <Content Include="@(_x86LibPath)" Pack="true" PackagePath="\runtimes\win10-x86\lib\netcoreapp3.1" />
-      <Content Include="@(_x64LibPath)" Pack="true" PackagePath="\runtimes\win10-x64\lib\netcoreapp3.1" />
+      <!--LIB PACKAGE FOLDER-->
+      <Content Include="@(_x86LibPath)" Pack="true" PackagePath="\lib\netcoreapp3.1\x86" />
+      <Content Include="@(_x64LibPath)" Pack="true" PackagePath="\lib\netcoreapp3.1\x64" />
+      
+      <!--REF PACKAGE FOLDER-->
+      <Content Include="@(_x86LibPath)" Pack="true" PackagePath="\ref\netcoreapp3.1\x86" />
+      <Content Include="@(_x64LibPath)" Pack="true" PackagePath="\ref\netcoreapp3.1\x64" />      
+      
       <!--<Content Include="$(ProjectDir)MultiArchNuget.targets" Pack="true" PackagePath="\build" />-->
     </ItemGroup>
     
