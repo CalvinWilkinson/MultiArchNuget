@@ -3,11 +3,12 @@
   <!--DLL PATHS-->
   <ItemGroup>
     <_buildLibPath Include="$(MSBuildThisFileDirectory)$(PlatformName)\MultiArchNuget.dll" />
-    <_libPath Include="..\lib\netcoreapp3.1\MultiArchNuget.dll" />
   </ItemGroup>
 
   <Target Name="ReplaceLibrary" BeforeTargets="Build">
-    <Copy SourceFiles="@(_buildLibPath)" DestinationFiles="@(_libPath)"/>
+    <Message Importance="high" Text="Src File: @(_buildLibPath)"/>
+    
+    <Copy SourceFiles="@(_buildLibPath)" DestinationFolder="@(_libPath)"/>
   </Target>
   
 	<!--<Target Name="ChooseLibArch" AfterTargets="Build" >
