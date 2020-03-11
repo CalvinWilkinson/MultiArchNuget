@@ -1,5 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -9,7 +8,7 @@
 
   <PropertyGroup>
     <OutputPath></OutputPath>
-    <PackageId>MultiArchNuget</PackageId>
+    <PackageId>MultiArchNuget.$(Platform)</PackageId>
   </PropertyGroup>
 
 
@@ -27,32 +26,19 @@
     <DefineConstants>TRACE;RELEASE64</DefineConstants>
   </PropertyGroup>
 
-
+ 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <DefineConstants>TRACE;RELEASE86</DefineConstants>
   </PropertyGroup>
 
+  
   <ItemGroup>
-    <_x86LibPath Include="$(ProjectDir)bin\x86\Release\netcoreapp3.1\$(AssemblyName).dll" />
-    <_x64LibPath Include="$(ProjectDir)bin\x64\Release\netcoreapp3.1\$(AssemblyName).dll" />
+    <_libPath Include="$(ProjectDir)bin\$(PlatformName)\Release\netcoreapp3.1\$(AssemblyName).dll" />
   </ItemGroup>
 
-  <Target Name="BuildArchLibs" Condition="'$(ConfigurationName)' == 'Release'" AfterTargets="Build">
-    <ItemGroup>
-      <Content Include="@(_x86LibPath)" Pack="true" PackagePath="\runtimes\win10-x86\lib\netcoreapp3.1" />
-      <Content Include="@(_x64LibPath)" Pack="true" PackagePath="\runtimes\win10-x64\lib\netcoreapp3.1" />
-      <!--<Content Include="$(ProjectDir)MultiArchNuget.targets" Pack="true" PackagePath="\build" />-->
-    </ItemGroup>
-    
-    <Message Importance="high" Text="Lib Path (x86): @(_x86LibPath)" />
-    <Message Importance="high" Text="Lib Path (x64): @(_x64LibPath)" />
-  </Target>
-  
-  
   <Target Name="PackNativeLibs" Condition="$(ConfigurationName) == 'Release'" AfterTargets="Build">
     <ItemGroup>
-      <Content Include="$(ProjectDir)SDL\x86\SDL-x86.dll" Pack="true" PackagePath="\runtimes\win10-x86\native" />
-      <Content Include="$(ProjectDir)SDL\x64\SDL-x64.dll" Pack="true" PackagePath="\runtimes\win10-x64\native" />
+      <Content Include="$(ProjectDir)SDL\$(PlatformName)\SDL-$(PlatformName).dll" Pack="true" PackagePath="\runtimes\win10-$(PlatformName)\native" />
     </ItemGroup>
   </Target>
 </Project>
